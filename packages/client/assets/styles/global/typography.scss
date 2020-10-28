@@ -1,0 +1,37 @@
+@font-face{
+    font-family: colus;
+    src: url(./../../fonts/Colus-Regular.woff2);
+}
+@font-face{
+    font-family: kanit;
+    src: url(./../../fonts/Kanit-Medium.ttf);
+}
+
+body {
+    font-family: kanit, sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--color-grey-light-1)
+}
+
+.heading_primary {
+    color: var(--color-white);
+    text-transform: uppercase;
+
+    backface-visibility: hidden;
+}
+
+.heading_secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+}
+
+.heading_tertiary {
+    font-size: var(--default-font-size);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paragraph {
+    font-size: var(--default-font-size);
+}

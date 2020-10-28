@@ -1,0 +1,9 @@
+{
+  "extensions": {
+    "endpoints": {
+      "My endpoint": {
+        "url": "http://localhost:3000/graphql"
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+
+#### Queries ###
+type Query {
+    getUsers: [User!]!
+    getAsignaturas: [Asignatura!]!
+}
+
+#### Mutations ###
+
+type Mutation {
+    createUser(user: UserInput!): ResponseApiUser!
+    createAsignatura(asignatura: AsignaturaInput!): Asignatura!
+    login(user: String, password:String!): ResponseApiUser!
+}
+
+#### Inputs ###
+
+input UserInput {
+    userName: String!
+    apellido: String!
+    email: String!
+    password: String!
+}
+
+input AsignaturaInput {
+    tema: String
+    asignatura: String
+}
+
+#### Types ###
+
+type User {
+    _id: ID!
+    userName: String!
+    apellido: String!
+    email: String!
+    createdAt: String!
+    updateAt: String!
+    avatar: String
+}
+
+""" type Tokens {
+    token: String!
+} """
+
+type ResponseApiUser {
+    user: User!
+    token: String! 
+}
+
+
+type Asignatura {
+    _id: ID!
+    temas: [String!]!
+    asignatura: String!
+}

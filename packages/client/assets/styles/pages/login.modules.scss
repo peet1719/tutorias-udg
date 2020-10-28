@@ -1,0 +1,33 @@
+.login{
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    background-image: linear-gradient(105deg,
+                                      rgba(#141414, 0.9) 0%,
+                                      rgba(#141414, 0.9) 60%,
+                                      transparent 50%),
+                                      url('./../../img/loginBackground.jpg');
+    
+    background-size: 100%;
+    border-radius: 3px;
+    height: 50rem;
+    width: 80vw;
+}
+
+.forgot-password{
+    text-decoration: none;
+    font-size: 1.5rem;
+    color:var(--color-danger);
+
+    &:hover,
+    &:visited,
+    &:active{
+        color: var(--color-danger-light);
+    }
+}
+
+.error-mensaje{
+    font-size: 1.5rem;
+    color: var(--color-white);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+}

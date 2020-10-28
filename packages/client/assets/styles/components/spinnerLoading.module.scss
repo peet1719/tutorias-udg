@@ -1,0 +1,29 @@
+
+    .loading_spinner {
+        width:10rem;
+        height: 10rem;
+        display: inline-block;
+        border: 3px solid rgba(var(--color-white), 0.3);
+        border-radius: 50%;
+        border-top-color: rgb(var(--color-white));
+
+        & :local{
+            animation: spin 1s infinite ease-in-out;
+        }
+        
+    }
+
+    .wrapper{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+@keyframes spin {
+    to{
+        transform: rotate(360deg)
+    }
+}

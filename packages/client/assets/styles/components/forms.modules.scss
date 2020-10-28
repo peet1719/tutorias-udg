@@ -1,0 +1,112 @@
+.line_break{
+    width: 100%;
+}
+.container__login{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.form_login{
+    
+    width:50%;
+    padding:6rem;
+
+    &__group:not(:last-child){
+        margin-bottom: 1rem;
+    }
+
+    &__input{
+        font-size: 1.5rem;
+        font-family: inherit;
+        color: var(--color-grey-light-1);
+        padding: 1.5rem 2rem;
+        background-color: rgba(var(--color-black), 0.5);
+        border-radius: 2px;
+        border: none;
+        border-bottom: 3px solid transparent;
+        width: 100%;
+        transition: all .5s;
+
+        &:focus{
+            outline:none;
+            box-shadow: 0 1rem 2rem rgba(var(--color-white), 0.1);
+            border-bottom: 3px solid rgb(var(--color-white));  
+        }
+
+        &:focus:invalid{
+            border-bottom: 3px solid #e2bc13;
+        }
+
+    }
+
+    &__label{
+        font-size: 1.3rem;
+        margin: 1rem 2rem;
+        display: block;
+        transition: all .5s;
+    }
+
+    &__input:placeholder-shown + &__label{
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+}
+
+.form_signup{
+
+    padding: 0 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    height: 70%;
+
+    &__group:not(:last-child){
+        margin-bottom: 1rem;
+        flex-basis: 45%;
+    }
+    &__input{
+        font-size: 1.5rem;
+        font-family: inherit;
+        width: 100%;
+        color: var(--color-grey-light-1);
+        padding: 1.5rem 2rem;
+        background-color: rgba(255,255,255, 0.2);
+        
+        border-radius: 2px;
+        transition: all .5s;
+
+        &:focus{
+            outline:none;
+            box-shadow: 0 1rem 2rem rgba(var(--color-white), 0.1);
+            border-bottom: 3px solid rgb(var(--color-white));  
+        }
+
+        &:focus:invalid{
+            border-bottom: 3px solid #e2bc13;
+        }
+    }
+    &__label{
+        font-size: 1.3rem;
+        padding-left: 2.5rem;
+        display: block;
+        transition: all .5s;
+    }
+
+    &__input:placeholder-shown + &__label{
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+
+    &__message{
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
