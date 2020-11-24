@@ -2,29 +2,29 @@
     //Colors
     //Usar RGB para que funcione en propiedades como rgba
 
---color-primary: #FFB700;
---color-primary-light: #FFE01E;
---color-primary-dark: #DA9D01;
+--color-primary: 255, 183, 0 ;// #FFB700;
+--color-primary-light: 255, 224, 30 ;// #FFE01E;
+--color-primary-dark: 218, 157, 1 ;//#DA9D01;
 
---color-grey-light-1: #f7f7f7;
---color-grey-light-2: #eee;
+--color-grey-light-1: 247, 247, 247; //#f7f7f7;
+--color-grey-light-2: 238, 238, 238; //#eee;
 
---color-grey-dark-1: #B5B5B5;
---color-grey-dark-2: #646569;
---color-grey-dark-3: #161615;
+--color-grey-dark-1: 181, 181, 181; // #B5B5B5;
+--color-grey-dark-2:  100, 101, 105; // #646569;
+--color-grey-dark-3: 22, 22, 21; // #161615;
 
 --color-white: 255,255,255; // #fff
 --color-black: 0,0,0; // #000
 
---color-black-light: #090909;
+--color-black-light: 9, 9, 9; // #090909;
 
---color-danger: #a30000;
---color-danger-light: #ac1919;
---color-danger-dark: #820000;
+--color-danger: 163, 0, 0; //#a30000;
+--color-danger-light: 172, 25, 25; // #ac1919;
+--color-danger-dark: 130, 0, 0; // #820000;
 
---bg:  #242526;
-  --bg-accent: #484a4d;
-  --text-color: #dadce1;
+--bg:  36, 37, 38; //#242526;
+  --bg-accent: 72, 74, 77; //#484a4d;
+  --text-color: 218, 220, 225; // #dadce1;
   --nav-size: 60px;
   --border: 1px solid #474a4d;
   --border-radius: 8px;
@@ -49,17 +49,22 @@ html {
 
 body {
     box-sizing: border-box;
-    padding: 3rem;
     background: rgb(var(--color-black));
 
 }
 
 a{
-    color: var(--color-primary-light)
+    color: rgb(var(--color-primary-light));
 }
 
 ::selection {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background-color: rgb(var(--color-primary));
+    color: rgb(var(--color-white));
 }
 
+.margin_t_mall{
+    margin-top: 1rem;
+}
+.padding_t_mall{
+    padding-top: 1rem;
+}

@@ -3,6 +3,7 @@ import styles from './../../assets/styles/main.module.scss'
 import useCustomForm from './../customHooks/useCustomForm';
 import ErrorComponent from './../alerts/ErrorComponent'
 import Link from 'next/link';
+import { errorsVar } from './../../cache';
 
 const initialValues = {
     nombreUsuario: "",
@@ -14,7 +15,7 @@ const initialValues = {
 const FormSignup = (props) => {
     const [step, setStep] = useState(1);
     const [confirmar, setConfirmar] = useState({});
-    const [errorConfirmar, setErrorConfirmar] = useState(false);
+    const [render, setRender] = useState(false);
 
     /* const [paswword, setPassword] = useState('');
     const [passwordConf, setPasswordConf] = useState(''); */
@@ -23,25 +24,35 @@ const FormSignup = (props) => {
         props.signup({
             variables:
             {
-                userName: values.nombreUsuario,
-                email: values.email,
-                password: values.password
+                user: {
+                    userName: values.nombreUsuario,
+                    apellido: values.apellido,
+                    email: values.email,
+                    password: values.password
+                }
             }
         })
     }
+
+    useEffect(() => {
+        setRender(errorsVar())
+    })
 
     const { values,
         errors,
         handleChange,
         handleSubmit
-    } = useCustomForm({ initialValues, signup }
+    } = useCustomForm({ initialValues, onSubmit: signup }
     );
 
     useEffect(() => {
-        if (confirmar.password === confirmar.passwordConf) {
-            setErrorConfirmar(false)
+        if (confirmar.password !== confirmar.passwordConf && confirmar.passwordConf !== "") {
+            errorsVar("Las contraseñas no coinciden")
+            setRender(true)
         } else {
-            setErrorConfirmar(true)
+            errorsVar("")
+            //Aux para renderizar la página
+            setRender(false)
         }
 
     }, [confirmar])
@@ -64,7 +75,7 @@ const FormSignup = (props) => {
                     <p className="paragraph">Ya tienes cuenta <Link href="/login"><a>INGRESA !</a></Link> </p>
                 </div>
 
-                <form className={styles.form_signup} >
+                <form className={styles.form_signup} onSubmit={handleSubmit}>
                     <div className={styles.form_signup__group}>
                         <input
                             className={styles.form_signup__input}
@@ -74,8 +85,10 @@ const FormSignup = (props) => {
                             placeholder="Nombre"
                             minLength="4"
                             required
+                            value={values.nombreUsuario}
+                            onChange={handleChange}
                         />
-                        <label htmlFor="usuario" className={styles.form_signup__label}>Apellido</label>
+                        <label htmlFor="usuario" className={styles.form_signup__label}>Nombre</label>
                     </div>
                     <div className={styles.form_signup__group}>
                         <input
@@ -86,6 +99,8 @@ const FormSignup = (props) => {
                             placeholder="Apellido"
                             minLength="4"
                             required
+                            value={values.apellido}
+                            onChange={handleChange}
                         />
                         <label htmlFor="apellido" className={styles.form_signup__label}>Apellido</label>
                     </div>
@@ -97,6 +112,8 @@ const FormSignup = (props) => {
                         name="email" 
                         placeholder="E-mail" 
                         required
+                        value={values.email}
+                        onChange={handleChange}
                         />
                         <label htmlFor="email" className={styles.form_signup__label}>Email</label>
                     </div>
@@ -107,9 +124,11 @@ const FormSignup = (props) => {
                             type="password"
                             name="password"
                             placeholder="contraseña"
-                            onChange={confirmarPassword}
                             minLength="8"
                             required
+                            onBlur={confirmarPassword}
+                            value={values.password}
+                            onChange={handleChange}
                         />
                         <label htmlFor="password" className={styles.form_signup__label}>Contraseña</label>
                     </div>
@@ -120,7 +139,7 @@ const FormSignup = (props) => {
                             type="password"
                             name="passwordConf"
                             placeholder="confirmar contraseña"
-                            onChange={confirmarPassword}
+                            onBlur={confirmarPassword}
                             minLength="8"
                             required
 
@@ -128,15 +147,15 @@ const FormSignup = (props) => {
                         <label htmlFor="passwordConf" className={styles.form_signup__label}>Confirmar contraseña</label>
                     </div>
                     {/* <div className={styles.line_break}></div> */}
-                    <div className={`${styles.form_signup__group}`}>
+                    <div className={`${styles.form_signup__group} ${styles.form_signup__button}`}>
                         {
                             /* errorConfirmar && (<div className={styles.error_mensaje}>no se puedo ingresar</div>) */
                         }
                         <input className={`${styles.btn} ${styles.btn__primary}`} type="submit" value="Registrarse" name="submit" />
                     </div>
-                    <div className={`${styles.form_signup__group}`}>
-                        <ErrorComponent show={errorConfirmar}>Las contraseñas no coinciden</ErrorComponent>
-                    </div> 
+                    <div className={styles.line_break}></div>
+                    
+                    <ErrorComponent>{errorsVar()}</ErrorComponent>
                 </form>
             </Fragment>
         )

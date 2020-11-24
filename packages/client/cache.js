@@ -17,7 +17,11 @@ export const cacheApollo = new InMemoryCache({
                     read(){
                         return errorsVar()
                     }
-                    
+                },
+                showModal: {
+                    read(){
+                        return showModalVar()
+                    }
                 }
             }
         }
@@ -25,10 +29,9 @@ export const cacheApollo = new InMemoryCache({
 });
 
 export const isLoggedInVar = makeVar(false)
-
 export const dataUserVar = makeVar({})
-
 export const errorsVar = makeVar('')
+export const showModalVar = makeVar(false)
 
 
 

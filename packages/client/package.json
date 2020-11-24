@@ -35,5 +35,8 @@
     "sass": "^1.26.9",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "svg-sprite-loader": "^5.0.0"
   }
 }

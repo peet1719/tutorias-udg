@@ -15,7 +15,7 @@ const server = new ApolloServer({
         const token = req.headers.authorization || "";
         if(!token) return null;
         
-        const decode = jwt.verify(token, 'secretkeyChange', function(err, decode){
+        const decode = jwt.verify(token, process.env.JWT_SECRET , function(err, decode){
             if(err){ return false }
         });
         

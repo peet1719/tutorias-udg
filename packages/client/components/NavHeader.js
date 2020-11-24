@@ -2,12 +2,11 @@ import styles from './../assets/styles/components/navHeader.module.scss';
 import slugify from './../utils/friendly-url';
 import { GET_DATA_HEADER } from './graphql/querys/users';
 
-import SpinnerLoading from '../components/SpinnerLoading';
 import { dataUserVar, isLoggedInVar } from './../cache'
 import React, { useState, useEffect, useRef, Fragment } from 'react';
 import jwt_decode from 'jwt-decode';
 import Link from 'next/link';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client';
 import usePayloadToken from './customHooks/usePayloadToken';
 
@@ -26,7 +25,7 @@ const NavHeader = () => {
     const [userData, setUserData] = useState({})
 
     useEffect(() => {
-        if (localStorage.getItem('token') ) {
+        if (localStorage.getItem('token')) {
             const dataDecode = jwt_decode(localStorage.getItem('token'))
             setUserData(dataDecode)
 
@@ -67,11 +66,11 @@ function loginItem(userData) {
         const contentProfile = [
             {
                 contenido: "Perfil",
-                url: "usuario/"
+                url: "account/"
             },
             {
                 contenido: "Cerrar Sesión",
-                url: "usuario/"
+                url: "account/"
             },
         ]
         return (
@@ -237,10 +236,10 @@ function DropdownMenu({ content, multiDropdown }) {
 
     function DropdownItem(props) {
         const router = useRouter();
-        
+
         const link = props.url ? props.url + slugify(props.children) : router.route
-        
-        
+
+
         return (
             //optimizar el tag link para que mejore la animación
             <Link href={`${link}`} passHref={true}>

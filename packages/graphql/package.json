@@ -15,7 +15,9 @@
     "graphql-import-node": "^0.0.4",
     "graphql-tools": "^6.0.11",
     "jsonwebtoken": "^8.5.1",
+    "mailgen": "^2.0.14",
     "mongoose": "^5.9.20",
+    "nodemailer": "^6.4.16",
     "validator": "^13.1.1"
   }
 }

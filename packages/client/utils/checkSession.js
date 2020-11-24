@@ -10,7 +10,6 @@ export const isLoggedIn = () => {
     `
     const {data} = useQuery(GET_IS_LOGGED);
     setIsLogged(data.isLoggedIn)
-    console.log(isLogged)
     
 
     return isLogged;

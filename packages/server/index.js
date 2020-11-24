@@ -2,7 +2,7 @@ import express from 'express';
 import nextApp from '@monorepo/client';
 import apolloServer from '@monorepo/graphql';
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 async function main() {
     const app = express();
