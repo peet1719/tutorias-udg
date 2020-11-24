@@ -66,11 +66,11 @@ function loginItem(userData) {
         const contentProfile = [
             {
                 contenido: "Perfil",
-                url: "account/"
+                url: "account/profile"
             },
             {
                 contenido: "Cerrar Sesión",
-                url: "account/"
+                url: "account/cerrar-sesion"
             },
         ]
         return (
@@ -237,7 +237,7 @@ function DropdownMenu({ content, multiDropdown }) {
     function DropdownItem(props) {
         const router = useRouter();
 
-        const link = props.url ? props.url + slugify(props.children) : router.route
+        const link = props.url ? props.url : router.route
 
 
         return (
