@@ -1,0 +1,271 @@
+.icon {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(sprite.svg);
+}
+.icon-home {
+  width: 32px;
+  height: 32px;
+  background-position: 0 0;
+}
+.icon-image {
+  width: 32px;
+  height: 32px;
+  background-position: -48px 0;
+}
+.icon-play {
+  width: 32px;
+  height: 32px;
+  background-position: -96px 0;
+}
+.icon-folder {
+  width: 32px;
+  height: 32px;
+  background-position: -144px 0;
+}
+.icon-folder-download {
+  width: 32px;
+  height: 32px;
+  background-position: -192px 0;
+}
+.icon-folder-upload {
+  width: 32px;
+  height: 32px;
+  background-position: -240px 0;
+}
+.icon-location2 {
+  width: 32px;
+  height: 32px;
+  background-position: -288px 0;
+}
+.icon-bell {
+  width: 32px;
+  height: 32px;
+  background-position: -336px 0;
+}
+.icon-bubbles {
+  width: 36px;
+  height: 32px;
+  background-position: -384px 0;
+}
+.icon-bubbles2 {
+  width: 36px;
+  height: 32px;
+  background-position: -432px 0;
+}
+.icon-user {
+  width: 32px;
+  height: 32px;
+  background-position: -480px 0;
+}
+.icon-spinner9 {
+  width: 32px;
+  height: 32px;
+  background-position: -528px 0;
+}
+.icon-key {
+  width: 32px;
+  height: 32px;
+  background-position: -576px 0;
+}
+.icon-lock {
+  width: 32px;
+  height: 32px;
+  background-position: -624px 0;
+}
+.icon-unlocked {
+  width: 32px;
+  height: 32px;
+  background-position: -672px 0;
+}
+.icon-power {
+  width: 32px;
+  height: 32px;
+  background-position: -720px 0;
+}
+.icon-list-numbered {
+  width: 32px;
+  height: 32px;
+  background-position: 0 -48px;
+}
+.icon-list {
+  width: 32px;
+  height: 32px;
+  background-position: -48px -48px;
+}
+.icon-list2 {
+  width: 32px;
+  height: 32px;
+  background-position: -96px -48px;
+}
+.icon-download2 {
+  width: 32px;
+  height: 32px;
+  background-position: -144px -48px;
+}
+.icon-upload2 {
+  width: 32px;
+  height: 32px;
+  background-position: -192px -48px;
+}
+.icon-download3 {
+  width: 32px;
+  height: 32px;
+  background-position: -240px -48px;
+}
+.icon-upload3 {
+  width: 32px;
+  height: 32px;
+  background-position: -288px -48px;
+}
+.icon-bookmark {
+  width: 32px;
+  height: 32px;
+  background-position: -336px -48px;
+}
+.icon-bookmarks {
+  width: 32px;
+  height: 32px;
+  background-position: -384px -48px;
+}
+.icon-happy {
+  width: 32px;
+  height: 32px;
+  background-position: -432px -48px;
+}
+.icon-happy2 {
+  width: 32px;
+  height: 32px;
+  background-position: -480px -48px;
+}
+.icon-smile {
+  width: 32px;
+  height: 32px;
+  background-position: -528px -48px;
+}
+.icon-smile2 {
+  width: 32px;
+  height: 32px;
+  background-position: -576px -48px;
+}
+.icon-sad {
+  width: 32px;
+  height: 32px;
+  background-position: -624px -48px;
+}
+.icon-sad2 {
+  width: 32px;
+  height: 32px;
+  background-position: -672px -48px;
+}
+.icon-shocked {
+  width: 32px;
+  height: 32px;
+  background-position: -720px -48px;
+}
+.icon-shocked2 {
+  width: 32px;
+  height: 32px;
+  background-position: 0 -96px;
+}
+.icon-wondering {
+  width: 32px;
+  height: 32px;
+  background-position: -48px -96px;
+}
+.icon-wondering2 {
+  width: 32px;
+  height: 32px;
+  background-position: -96px -96px;
+}
+.icon-warning {
+  width: 32px;
+  height: 32px;
+  background-position: -144px -96px;
+}
+.icon-notification {
+  width: 32px;
+  height: 32px;
+  background-position: -192px -96px;
+}
+.icon-question {
+  width: 32px;
+  height: 32px;
+  background-position: -240px -96px;
+}
+.icon-plus {
+  width: 32px;
+  height: 32px;
+  background-position: -288px -96px;
+}
+.icon-minus {
+  width: 32px;
+  height: 32px;
+  background-position: -336px -96px;
+}
+.icon-info {
+  width: 32px;
+  height: 32px;
+  background-position: -384px -96px;
+}
+.icon-cancel-circle {
+  width: 32px;
+  height: 32px;
+  background-position: -432px -96px;
+}
+.icon-blocked {
+  width: 32px;
+  height: 32px;
+  background-position: -480px -96px;
+}
+.icon-cross {
+  width: 32px;
+  height: 32px;
+  background-position: -528px -96px;
+}
+.icon-checkmark {
+  width: 32px;
+  height: 32px;
+  background-position: -576px -96px;
+}
+.icon-exit {
+  width: 32px;
+  height: 32px;
+  background-position: -624px -96px;
+}
+.icon-google2 {
+  width: 32px;
+  height: 32px;
+  background-position: -672px -96px;
+}
+.icon-facebook2 {
+  width: 32px;
+  height: 32px;
+  background-position: -720px -96px;
+}
+.icon-instagram {
+  width: 32px;
+  height: 32px;
+  background-position: 0 -144px;
+}
+.icon-whatsapp {
+  width: 32px;
+  height: 32px;
+  background-position: -48px -144px;
+}
+.icon-twitter {
+  width: 32px;
+  height: 32px;
+  background-position: -96px -144px;
+}
+.icon-youtube {
+  width: 32px;
+  height: 32px;
+  background-position: -144px -144px;
+}
+.icon-youtube2 {
+  width: 80px;
+  height: 32px;
+  background-position: -192px -144px;
+}
+

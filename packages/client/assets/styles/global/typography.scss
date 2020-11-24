@@ -11,11 +11,11 @@ body {
     font-family: kanit, sans-serif;
     font-weight: 400;
     line-height: 1.7;
-    color: var(--color-grey-light-1)
+    color: rgb(var(--color-grey-light-1));
 }
 
 .heading_primary {
-    color: var(--color-white);
+    color: rgb(var(--color-white));
     text-transform: uppercase;
 
     backface-visibility: hidden;

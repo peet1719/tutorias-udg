@@ -3,6 +3,9 @@
 type Query {
     getUsers: [User!]!
     getAsignaturas: [Asignatura!]!
+    verificationToken(token:String): ResponseVerificationToken!
+    resetPassword(email:String): String!
+    validateToken(token:String): Boolean!
 }
 
 #### Mutations ###
@@ -11,6 +14,7 @@ type Mutation {
     createUser(user: UserInput!): ResponseApiUser!
     createAsignatura(asignatura: AsignaturaInput!): Asignatura!
     login(user: String, password:String!): ResponseApiUser!
+    changePassword(email: String!, password: String!): User
 }
 
 #### Inputs ###
@@ -53,4 +57,10 @@ type Asignatura {
     _id: ID!
     temas: [String!]!
     asignatura: String!
+}
+
+type ResponseVerificationToken {
+    title: String!
+    text: String!
+    successful: Boolean!
 }

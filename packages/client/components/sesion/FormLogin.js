@@ -1,7 +1,8 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './../../assets/styles/main.module.scss';
 import useCustomForm from './../customHooks/useCustomForm';
 import ErrorComponent from './../alerts/ErrorComponent';
+import Link from 'next/link';
 import { useReadReactiveVar } from './../customHooks/useReadReactiveVar';
 import { errorsVar } from './../../cache';
 
@@ -14,9 +15,8 @@ const FormLogin = (props) => {
     const [error, setError] = useState(errorsVar())
     /* const error = useReadReactiveVar('error'); */
     /* const error = errorsVar(); */
-    console.log(error)
 
-    useEffect(()=> {
+    useEffect(() => {
         setError(errorsVar())
     })
 
@@ -56,7 +56,7 @@ const FormLogin = (props) => {
             <div className={styles.login}>
                 <form className={styles.form_login} onSubmit={handleSubmit}>
                     <div className={styles.form_login__group}>
-                        <ErrorComponent show={!!error}>{error}</ErrorComponent>
+                        <ErrorComponent>{error}</ErrorComponent>
                     </div>
                     <div className={styles.form_login__group}>
                         <input
@@ -68,7 +68,7 @@ const FormLogin = (props) => {
                             required
                             onChange={handleChange}
                             value={values.nombreUsario}
-                            onFocus={() => { errorsVar('')}}
+                            onFocus={() => { errorsVar('') }}
                         />
                         <label htmlFor="usuario" className={styles.form_login__label}>E-mail</label>
                     </div>
@@ -82,10 +82,10 @@ const FormLogin = (props) => {
                             required
                             onChange={handleChange}
                             value={values.password}
-                            onFocus={() => { errorsVar('')}}
+                            onFocus={() => { errorsVar('') }}
                         />
                         <label htmlFor="password" className={styles.form_login__label}>Contraseña</label>
-                        <a className={styles.forgot_password} href="#">¿Olvidaste tu constraseña?</a>
+                        <Link href="account/reset_password" passHref={true} ><a className={styles.forgot_password}> ¿Olvidaste tu constraseña?</a></Link>
                     </div>
                     <div className={styles.form_login__group}>
                         <input className={`${styles.btn} ${styles.btn__primary}`} type="submit" value="ingresar" name="submit" />

@@ -1,6 +1,9 @@
 import React from 'react';
 
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
+import { showModalVar } from "./../cache";
+import MensajeRegistro from './../components/modals/MensajeRegistro';
+
 
 
 const SSR = ({ temasPromise }) => {
@@ -14,6 +17,7 @@ const SSR = ({ temasPromise }) => {
 
   return (
     <Layout>
+      <MensajeRegistro show={showModalVar()} />
       home
     </Layout>
   );

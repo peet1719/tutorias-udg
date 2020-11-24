@@ -1,3 +1,5 @@
+import {ApolloError} from 'apollo-server-express';
+
 const query = {
     Query: {
         getUsers : (_,__, {dataSources}) => {
@@ -24,6 +26,33 @@ const query = {
                 tema: ['No se han encontrado temas'],
                 Asignatura: "No se han encontrado asignatura"
             }]
+        },
+
+        verificationToken: (_,{token},{dataSources}) => {
+            const response = dataSources.tutoriasApi.validateVerificationToken(token)
+            console.log(response)
+            if(!response.message){
+                return response;
+            }else {
+                throw new ApolloError(response.message, 400);
+            }
+        
+        },
+        resetPassword: (_,{email},{dataSources}) => {
+            const response = dataSources.tutoriasApi.resetPassword(email)
+            if(response){
+                return response;
+            }else {
+                throw new ApolloError(response.message, 400);
+            }      
+        },
+        validateToken:(_,{token}, {dataSources}) => {
+            const response = dataSources.tutoriasApi.validateToken(token)
+            if(response){
+                return response;
+            }else {
+                throw new ApolloError(response.message, 400);
+            }
         }
     }
 }

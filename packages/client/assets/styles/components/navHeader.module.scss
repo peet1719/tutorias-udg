@@ -9,7 +9,7 @@
   box-sizing: content-box;
     position: absolute;
     transform: translateX(-45%);
-    background-color: var(--bg);
+    background-color: rgb(var(--bg));
     border: var(--border);
     border-radius: var(--border-radius);
     padding: .5rem;
@@ -24,7 +24,7 @@
   }
   
   .navA {
-    color: var(--text-color);
+    color: rgb(var(--text-color));
     text-decoration: none;;
   }
   
@@ -34,7 +34,7 @@
   .navbar {
     font-size: var(--default-font-size);
     height: var(--nav-size);
-    background-color: var(--bg);
+    background-color: rgb(var(--bg));
     
   }
   
@@ -53,7 +53,7 @@
     align-items: stretch;
     &:hover,
     &:active{
-      color: var(--color-primary);
+      color: rgb(var(--color-primary));
       background-color: #525357;
     };
     & a{
@@ -89,7 +89,7 @@
   }
   
   .iconButton svg { 
-    fill: var(--text-color);
+    fill: rgb(var(--text-color));
     width: 20px;
     height: 20px;
   }
@@ -99,13 +99,13 @@
 
   .dropdown {
     @extend %dropdownClass;  
-    top: 8rem;
+    top: 5rem;
     right: 25rem;
     width: 25rem;
 
     &__profile{
       @extend %dropdownClass;
-      top: 8rem;
+      top: 5rem;
       right: -4.5rem;
       width: 15rem;
       text-align: center;
@@ -142,7 +142,7 @@
   .iconRight {
     margin-left: auto;
     & svg { 
-      fill: var(--text-color);
+      fill: rgb(var(--text-color));
       width: 20px;
       height: 20px;
     }

@@ -16,18 +16,18 @@
 .forgot-password{
     text-decoration: none;
     font-size: 1.5rem;
-    color:var(--color-danger);
+    color: rgb(var(--color-danger));
 
     &:hover,
     &:visited,
     &:active{
-        color: var(--color-danger-light);
+        color: rgb(var(--color-danger-light));
     }
 }
 
 .error-mensaje{
     font-size: 1.5rem;
-    color: var(--color-white);
+    color: rgb(var(--color-white));
     padding: 1.5rem 2rem;
     margin-bottom: 2rem;
 }

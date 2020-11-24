@@ -1,19 +1,14 @@
-import {AuthenticationError} from 'apollo-server-express';
+import {AuthenticationError, ApolloError} from 'apollo-server-express';
 
 const mutation = {
     Mutation : {
         createUser: async (_, {user}, {dataSources}) => {
             const response = await dataSources.tutoriasApi.createUser(user);
-            if(response){
+            if(!response.message){
                 return response
             }
-            return {
-                user: {
-                    userName: "No se pudo agregar usuario",
-                    email: "",
-                    password: ""
-                },
-                token: "No se pudo agregar al usuario"
+            else {
+                throw new Error(response.message);
                  
             }
         },
@@ -34,6 +29,14 @@ const mutation = {
                 return response;
             }
             throw new AuthenticationError('Email o password incorrectos');
+        },
+        changePassword: async(_,{email, password}, {dataSources}) => {
+            const response = await dataSources.tutoriasApi.changePassword(email, password)
+            if(response) {
+                return response;
+            }else {
+                throw new ApolloError(response.message, 400);
+            }
         }
 
     }
