@@ -32,6 +32,11 @@
   
   /* <nav> */
   .navbar {
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index: 999;
     font-size: var(--default-font-size);
     height: var(--nav-size);
     background-color: rgb(var(--bg));

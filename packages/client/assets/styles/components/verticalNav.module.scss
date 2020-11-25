@@ -22,6 +22,7 @@ body::scrollbarThumb {
 
 .navbar {
     position: fixed;
+    top: 6rem;
     background-color: #23232e;
     transition: width 600ms ease;
     
@@ -73,6 +74,7 @@ body::scrollbarThumb {
 .link_text {
     display: none;
     margin-left: 1rem;
+    font-size: 1.8rem;
 }
 
 .fa_primary {
@@ -141,7 +143,6 @@ body::scrollbarThumb {
 /* Large screens */
 @media only screen and (min-width: 600px) {
     .navbar {
-        top: 6ren;
         width: 6rem;
         height: 100vh;
     }
