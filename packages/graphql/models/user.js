@@ -135,7 +135,6 @@ userSchema.pre('save', async function (next) {
     if (user.isModified('password') && user.password.length < 60) {
         user.password = await bcrypt.hash(user.password, 8)
     }
-
     next()
 })
 
@@ -150,7 +149,6 @@ userSchema.pre('remove', async function (next) {
 /* userSchema.virtual('disabledHook').get(function () {
     console.log(this)
 }); */
-
 
 
 /* userSchema.virtual('setEnabledHook').set(function (v) {  

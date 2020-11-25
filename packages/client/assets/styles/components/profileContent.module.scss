@@ -1,0 +1,78 @@
+.container {
+    margin: 1rem 6rem;
+
+
+    &_profile {
+        display: flex;
+        justify-content: center;
+    }
+    &_generalData {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+
+        & li {
+            list-style: none;
+            font-size: 1.6rem;
+            font-family: sans-serif;
+        }
+    }
+}
+
+.title {
+    font-family: sans-serif;
+    font-size: 3rem;
+    color: rgb(var(--color-grey-dark-1));
+    align-self: stretch;
+    text-align: center;
+}
+.profile {
+    background: #141417;
+    // delete heihgt and width
+    /* height: 32rem;
+    width: 30rem; */
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+
+    &_data {
+        background-color: #141417;
+        flex-grow: .8;
+        margin: 1rem;
+    }
+    &_shape {
+        width: 15rem;
+        height: 15rem;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 2rem 6rem;
+    }
+    &_description {
+        font-size: 2rem;
+        font-family: sans-serif;
+        padding: 1.5rem 0rem;
+        margin-left: 3rem;
+        color: rgb(var(--color-primary))
+    }
+}
+
+.username {
+    font-size: 2rem;
+    font-family: sans-serif;
+    padding: 2rem 0rem;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.spacer {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+}
