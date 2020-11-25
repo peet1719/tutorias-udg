@@ -222,6 +222,7 @@ function DropdownMenu({ content, multiDropdown }) {
                         onEnter={calcHeight}
                         unmountOnExit
                     >
+
                         <Fragment>
                             {contentDropDown.map(contentProfile => {
                                 return <DropdownItem key={contentProfile.contenido} url={contentProfile.url} >{contentProfile.contenido}</DropdownItem>
@@ -236,13 +237,12 @@ function DropdownMenu({ content, multiDropdown }) {
 
     function DropdownItem(props) {
         const router = useRouter();
-
+        console.log(router)
         const link = props.url ? props.url : router.route
-
 
         return (
             //optimizar el tag link para que mejore la animación
-            <Link href={`${link}`} passHref={true}>
+            <Link href={`${process.env.NEXT_PUBLIC_PATH}${link}`} >
                 <a className={`${styles.menuItem} ${styles.navA}`} onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
                     <span className={props.leftIcon ? styles.iconButton : ""}>{props.leftIcon}</span>
                     {props.children}

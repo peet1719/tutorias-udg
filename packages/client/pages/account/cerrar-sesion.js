@@ -1,7 +1,7 @@
 import {useRouter} from 'next/router';
 import { useIsLoggedIn, useReadReactiveVar } from './../../components/customHooks/useReadReactiveVar'
 import { dataUserVar, isLoggedInVar } from './../../cache'
-
+import SpinnerLoading from './../../components/modals/SpinnerLoading'
 
 const CerrarSesion = () => {
     const router = useRouter();
@@ -18,7 +18,7 @@ const CerrarSesion = () => {
     
     return(
         <div>
-            Cerrando sesión...
+            <SpinnerLoading/>
         </div>
     )
 }

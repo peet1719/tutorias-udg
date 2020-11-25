@@ -1,5 +1,9 @@
 import './../assets/styles/global/base.scss'
 import './../assets/styles/global/typography.scss'
+import 'react-big-calendar/lib/sass/styles.scss';
+
+
+
 
 import { useApollo } from './../apollo/apolloClient';
 import { useState, useEffect} from 'react';
@@ -7,6 +11,7 @@ import { ApolloProvider } from '@apollo/client';
 import {Flipper, Flipped} from 'react-flip-toolkit';
 import Router from 'next/router';
 import NProgress from 'nprogress';
+import { isLoggedInVar } from './../cache'
 import './../assets/styles/components/nprogres.css';
 
 //animaciones de transición de páginas

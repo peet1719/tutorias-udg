@@ -34,7 +34,7 @@ const MensajeDefault = (props) => {
 
 
     return (
-        <Modal isOpen={modal} style={customStyles} onRequestClose={() => setModal(false)}>
+        <Modal isOpen={modal} style={customStyles} /* onRequestClose={() => setModal(false)}*/ >
             <div className={styles.registro__wrapper}>
                 <div className={styles.registro__container}>
                     <h1 className={styles.registro__header}>{props.title} </h1>
