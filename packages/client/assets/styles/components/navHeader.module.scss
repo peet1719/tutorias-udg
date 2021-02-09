@@ -110,8 +110,8 @@
 
     &__profile{
       @extend %dropdownClass;
-      top: 5rem;
-      right: -4.5rem;
+      top: 5.5rem;
+      right: -7rem;
       width: 15rem;
       text-align: center;
     }
@@ -128,6 +128,7 @@
     border-radius: var(--border-radius);
     transition: background var(--speed);
     padding: 0.5rem;
+    cursor: pointer;
 
   }
   

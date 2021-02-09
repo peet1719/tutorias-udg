@@ -44,7 +44,7 @@ function ResetPassword() {
         },
         onError(error) {
             console.log(error)
-
+            setKey(key + 1)
         }
     })
 

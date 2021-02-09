@@ -17,15 +17,7 @@ const Agenda = () => {
         }
     }, [sesion])
     console.log(sesion)
-    /* if (!sesion) {
-      return (
-        <MensajeDefault show={true}
-          title="Lo sentimos"
-          text={"Ingresa a tu cuenta para ver tu perfil"} 
-          redirect={'/login'} />
-      )
-    } */
-
+    
     return (
         <Fragment>
             { sesion
@@ -39,9 +31,7 @@ const Agenda = () => {
                         text={"Ingresa a tu cuenta para acceder a tu perfil"}
                         redirect={'/login'} />
                 </Layout>
-
             }
-
         </Fragment>
     );
 };

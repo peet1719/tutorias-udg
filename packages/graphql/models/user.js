@@ -116,15 +116,13 @@ userSchema.statics.findByCredentials = async (email, password) => {
     if (!user) {
         throw new Error('unable to login')
     }
-
+    console.log(password)
     const isMatch = await bcrypt.compare(password, user.password)
 
     if (!isMatch) {
         throw new Error('Unable to login')
     }
-
     return user
-
 }
 
 // Encripta el password si este se actualiza
@@ -149,7 +147,6 @@ userSchema.pre('remove', async function (next) {
 /* userSchema.virtual('disabledHook').get(function () {
     console.log(this)
 }); */
-
 
 /* userSchema.virtual('setEnabledHook').set(function (v) {  
     if(recursion){

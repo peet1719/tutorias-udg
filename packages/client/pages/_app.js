@@ -4,7 +4,6 @@ import 'react-big-calendar/lib/sass/styles.scss';
 
 
 
-
 import { useApollo } from './../apollo/apolloClient';
 import { useState, useEffect} from 'react';
 import { ApolloProvider } from '@apollo/client';

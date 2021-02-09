@@ -4,6 +4,7 @@ import Asignatura from './../../models/asignatura';
 import validator from 'validator';
 import { transport, MailGenerator, transporter } from './../../configEmails';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
 class DataTutorias extends DataSource {
     constructor() {
@@ -194,18 +195,29 @@ class DataTutorias extends DataSource {
     }
 
     //change Password
-    async changePassword(email, password) {
+    async changePassword(email, password, newPassword) {
+        
         try{
             const user = await User.findOne({email: email})
-            user["password"] = password
-            console.log(user)
+            if(newPassword) {
+                console.log(newPassword)
+                const isMatch = await bcrypt.compare(password, user.password)
+                
+                if(!isMatch) {
+                    throw new Error("Tu actual contraseña es incorecta")        
+                }
+                user["password"] = newPassword
+            }else{
+                user["password"] = password
+            }
+            
+            
             const response =  await user.save()
-            return response;
+            return response
         }catch(e){
             console.log(e)
             throw new Error("No se ha podido cambiar tu contraseña.")
         }
-
         
     }
 
