@@ -25,7 +25,7 @@ const customStyles = {
 
 const SpinnerLoading = (props) => {
     return(
-        <Modal isOpen={props.isOpen} style={customStyles}>
+        <Modal isOpen={true} style={customStyles}>
             <div className={styles.wrapper}>
                 <div className={styles.loading_spinner}></div>
             </div>

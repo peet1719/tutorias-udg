@@ -18,7 +18,7 @@ const SSR = ({ temasPromise }) => {
   return (
     <Layout>
       <MensajeRegistro show={showModalVar()} />
-      home
+      Home
     </Layout>
   );
 };

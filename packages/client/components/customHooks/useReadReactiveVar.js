@@ -12,16 +12,23 @@ export const useIsLoggedIn = () => {
         }
     `
     const { data } = useQuery(GET_IS_LOGGED); */
-    useEffect(() => {
-        setToken(localStorage.getItem('token'))   
-    },[])
+    /* useEffect(() => {
+        const tokenValue = getToken()
+        console.log(tokenValue)
+        setToken(tokenValue)
+        console.log(token)
+        tkn = "sasa"
+
+    },[token])
+    
+    console.log(tkn)
+    console.log(sesion + token + "que chingados esta ") */
 
     if(sesion && token){
         console.log("envio true")
         return true
     }else{
         console.log("envio false")
-        return false
     }
     
     /* useEffect(() => {

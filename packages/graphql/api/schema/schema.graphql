@@ -14,7 +14,7 @@ type Mutation {
     createUser(user: UserInput!): ResponseApiUser!
     createAsignatura(asignatura: AsignaturaInput!): Asignatura!
     login(user: String, password:String!): ResponseApiUser!
-    changePassword(email: String!, password: String!): User
+    changePassword(email: String!, password: String!, newPassword: String): User
 }
 
 #### Inputs ###

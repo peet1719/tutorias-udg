@@ -1,40 +1,33 @@
-import styles from './../assets/styles/components/navHeader.module.scss';
-import slugify from './../utils/friendly-url';
 import { GET_DATA_HEADER } from './graphql/querys/users';
-
-import { dataUserVar, isLoggedInVar } from './../cache'
+import { dataUserVar, isLoggedInVar, positionDropdownVar } from './../cache'
+import useSession from './../components/customHooks/useSession';
 import React, { useState, useEffect, useRef, Fragment } from 'react';
-import jwt_decode from 'jwt-decode';
 import Link from 'next/link';
-import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client';
-import usePayloadToken from './customHooks/usePayloadToken';
 
-import BellIcon from './../assets/icons/bell.svg';
-import MessengerIcon from './../assets/icons/messenger.svg';
-import CaretIcon from './../assets/icons/caret.svg';
 import ChevronIcon from './../assets/icons/chevron.svg';
 import ArrowIcon from './../assets/icons/arrow.svg';
-
 import { CSSTransition } from 'react-transition-group';
-
-
-// Render inicio de sesión o mostrar perfil 
+import styles from './../assets/styles/components/navHeader.module.scss';
 
 const NavHeader = () => {
     const [userData, setUserData] = useState({})
+    const { getData } = useSession()
 
     useEffect(() => {
+
+        setUserData({})
         if (localStorage.getItem('token')) {
-            const dataDecode = jwt_decode(localStorage.getItem('token'))
-            setUserData(dataDecode)
+            const data = getData()
+
+            setUserData(data)
 
             //Variables reactivas
             isLoggedInVar(true)
-            dataUserVar(dataDecode)
+            dataUserVar(userData)
         }
 
-    }, [userData.userName])
+    }, [isLoggedInVar(), userData.userName])
 
     //conseguir los temas para el dropdown 
     const { data, loading, error } = useQuery(GET_DATA_HEADER)
@@ -47,8 +40,8 @@ const NavHeader = () => {
         <Fragment>
             <Navbar>
                 <NavItem content="Inicio" icon={false} to="" />
-                <NavItem content="Temas" icon={false} to="" >
-                    <DropdownMenu content={temas} multiDropdown={true}></DropdownMenu>
+                <NavItem content="Temas" icon={false} to="">
+                    <DropdownMenu content={temas} multiDropdown={true} calPosition={true}></DropdownMenu>
                 </NavItem>
                 <NavItem content="Tutores" icon={false} to="tutores" />
                 <NavItem content="Aprendices" icon={false} to="aprendices" />
@@ -60,9 +53,8 @@ const NavHeader = () => {
 
 function loginItem(userData) {
 
-    //meter el dropdown em ñugar del nombre como en el facebook
+    //meter el dropdown en lugar del nombre como el de facebook
     if (userData.userName) {
-        /* const contentProfile = ['Perfil', 'Cerrar Sesión'] */
         const contentProfile = [
             {
                 contenido: "Perfil",
@@ -70,7 +62,7 @@ function loginItem(userData) {
             },
             {
                 contenido: "Cerrar Sesión",
-                url: "account/cerrar-sesion"
+                url: ""
             },
         ]
         return (
@@ -84,7 +76,7 @@ function loginItem(userData) {
                 </NavItem> */}
 
                 <NavItem content={userData.userName} to="#">
-                    <DropdownMenu content={contentProfile} multiDropdown={false}></DropdownMenu>
+                    <DropdownMenu content={contentProfile} multiDropdown={false} calPosition={false}></DropdownMenu>
                 </NavItem>
             </Fragment>
         )
@@ -109,24 +101,35 @@ function Navbar(props) {
 function NavItem(props) {
     const [open, setOpen] = useState(false);
     const stylesNavItem = props.icon ? `${styles.navA}` : `${styles.navA}`
-    const [loading, setLoading] = useState(false)
+
+    const dropdownPositionRef = useRef(null);
+
+
+    // calcular bien la distancia del dropdown para que no quede chueco con nombres cortos
+    useEffect(() => {
+        if (props.content === 'Temas') {
+            const positionLeft = dropdownPositionRef.current?.offsetLeft
+            positionDropdownVar(positionLeft)
+            console.log(positionLeft)
+            console.log(dropdownPositionRef.current)
+        }
+    }, [props.children])
 
     return (
         <Fragment>
-            <li className={styles.navItem} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}  >
+            <li className={styles.navItem} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} ref={dropdownPositionRef}>
                 <Link href={`/${props.to}`}>
-                    <a className={stylesNavItem} onClick={() => setLoading(true)}>
+                    <a className={stylesNavItem}>
                         {props.content}
                     </a>
                 </Link>
                 {open && props.children}
             </li>
-            {/* <SpinnerLoading isOpen={loading}></SpinnerLoading> */}
         </Fragment>
     )
 }
 
-function DropdownMenu({ content, multiDropdown }) {
+function DropdownMenu({ content, multiDropdown, calPosition }) {
     const [activeMenu, setActiveMenu] = useState('main');
     const [menuHeight, setMenuHeight] = useState(null);
     const dropdownRef = useRef(null);
@@ -236,24 +239,46 @@ function DropdownMenu({ content, multiDropdown }) {
     }
 
     function DropdownItem(props) {
-        const router = useRouter();
-        console.log(router)
-        const link = props.url ? props.url : router.route
+        const { deleteSession } = useSession()
 
-        return (
-            //optimizar el tag link para que mejore la animación
-            <Link href={`${process.env.NEXT_PUBLIC_PATH}${link}`} >
-                <a className={`${styles.menuItem} ${styles.navA}`} onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+        /* const link = props.url ? props.url : router.route */
+        const link = props.url ? props.url : ''
+
+
+        //return diferent type of item fisrt work as a link second work as a button  
+        if (link) {
+            return (
+                <Link href={`${process.env.NEXT_PUBLIC_PATH}${link}`} >
+                    <a
+                        className={`${styles.menuItem} ${styles.navA}`}
+                        onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)
+                        }>
+                        <span className={props.leftIcon ? styles.iconButton : ""}>{props.leftIcon}</span>
+                        {props.children}
+                        <span className={styles.iconRight}>{props.rightIcon} </span>
+                    </a>
+                </Link>
+            );
+        } else {
+            return (
+                <a
+                    className={`${styles.menuItem} ${styles.navA}`}
+                    onClick={() => props.goToMenu ? setActiveMenu(props.goToMenu) : deleteSession()}>
                     <span className={props.leftIcon ? styles.iconButton : ""}>{props.leftIcon}</span>
                     {props.children}
                     <span className={styles.iconRight}>{props.rightIcon} </span>
                 </a>
-            </Link>
-        );
-    }
+            );
+        }
 
+    }
+    
     return (
-        <div className={stlyesDrop} style={{ height: menuHeight }} ref={dropdownRef}>
+        <div
+            className={stlyesDrop}
+            style={calPosition ? { height: menuHeight, left: positionDropdownVar() } : {height: menuHeight}}
+            ref={dropdownRef}
+        >
             <div className={styles.menu}>
                 {dropDownHtml}
             </div>

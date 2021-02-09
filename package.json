@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "build": "yarn workspace @monorepo/client run build",
-        "start": "yarn workspace @monorepo/server run start",
+        "start": "yarn workspace @monorepo/server run dev",
         "dev": "env-cmd -f ./config/dev.env nodemon --ignore /packages/client/ --exec babel-node ./packages/server/index.js nodemon nodemon yarn workspace @monorepo/server run dev"
     },
     "private": true,

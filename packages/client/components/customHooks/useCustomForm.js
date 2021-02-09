@@ -16,7 +16,7 @@ const useCustomForm = ({initialValues, onSubmit}) => {
         formRendered.current = false
     },[initialValues]);
 
-    const handleChange =(event) => {
+    const handleChange = (event) => {
         const { target } = event;
         const {name, value} = target;
         event.persist();

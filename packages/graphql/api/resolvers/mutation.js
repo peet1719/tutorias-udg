@@ -30,8 +30,8 @@ const mutation = {
             }
             throw new AuthenticationError('Email o password incorrectos');
         },
-        changePassword: async(_,{email, password}, {dataSources}) => {
-            const response = await dataSources.tutoriasApi.changePassword(email, password)
+        changePassword: async(_,{email, password, newPassword}, {dataSources}) => {
+            const response = await dataSources.tutoriasApi.changePassword(email, password, newPassword)
             if(response) {
                 return response;
             }else {
