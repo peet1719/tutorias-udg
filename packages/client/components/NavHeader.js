@@ -272,8 +272,6 @@ function DropdownMenu({ content, multiDropdown, calPosition }) {
         }
 
     }
-
-
     
     return (
         <div
